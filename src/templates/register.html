@@ -1,0 +1,74 @@
+<form action="/auth/register" method="post">
+
+    <!--Global data for all-->
+
+    <!--Organisation / teacher user - use the global user data-->
+
+    <input type="email" name="email" placeholder="email"> <br>
+    <input type="text" name="name" placeholder="name"> <br>
+    <input type="text" name="phone" placeholder="phone"> <br>
+
+    <!--User type-->
+
+    <select name="user_type" id="user_type">
+        <option value="student" onclick="show_signup_form('student')">Student</option>
+        <option value="parent" onclick="show_signup_form('parent')">Parent</option>
+        <option value="organisation" onclick="show_signup_form('organisation')">Organisation</option>
+    </select>
+
+    <!--Student user - hidden if not a student user-->
+
+    <div id="student_form" style="display: block;">
+        DOB : 
+        <input type="date" name="dob"> <br>
+        <!--Father details-->
+        <input type="email" name="father email" placeholder="father email"> <br>
+        <input type="text" name="father name" placeholder="father name"> <br>
+        <input type="text" name="father phone" placeholder="father phone"> <br>
+        <!--Mother details-->
+        <input type="email" name="mother email" placeholder="mother email"> <br>
+        <input type="text" name="mother name" placeholder="mother name"> <br>
+        <input type="text" name="mother phone" placeholder="mother phone"> <br>
+    </div>
+
+    <!--Parent user - hidden if not a parent user-->
+
+    <div id="parent_form" style="display: none;">
+        <input type="text" name="self relation" placeholder="self relation with student"> <br>
+        <!--Spouse details-->
+        <input type="email" name="spouse email" placeholder="spouse email"> <br>
+        <input type="text" name="spouse name" placeholder="spouse name"> <br>
+        <input type="text" name="spouse phone" placeholder="spouse phone"> <br> 
+    </div>
+
+    <div id="organisation_form" style="display: none;">organisation form</div>
+
+    <button type="submit">Register</button>
+    
+</form>
+
+<br>
+
+<a href="/auth/login">Login</a> <br>
+
+<script>
+    function show_signup_form(user_type) {
+        var student_form = document.getElementById("student_form");
+        var parent_form = document.getElementById("parent_form");
+        var organisation_form = document.getElementById("organisation_form");
+
+        if (user_type == "student"){
+            student_form.style.display = "block";
+            parent_form.style.display = "none";
+            organisation_form.style.display = "none";
+        } else if (user_type == "parent"){
+            student_form.style.display = "none";
+            parent_form.style.display = "block";
+            organisation_form.style.display = "none";
+        } else if (user_type == "organisation"){
+            student_form.style.display = "none";
+            parent_form.style.display = "none";
+            organisation_form.style.display = "block";
+        }
+    }
+</script>

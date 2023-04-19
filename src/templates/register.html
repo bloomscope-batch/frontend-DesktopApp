@@ -19,29 +19,47 @@
     <!--Student user - hidden if not a student user-->
 
     <div id="student_form" style="display: block;">
+
         DOB : 
         <input type="date" name="dob"> <br>
+
         <!--Father details-->
-        <input type="email" name="father email" placeholder="father email"> <br>
-        <input type="text" name="father name" placeholder="father name"> <br>
-        <input type="text" name="father phone" placeholder="father phone"> <br>
+        <input type="email" name="father_email" placeholder="father email"> <br>
+        <input type="text" name="father_name" placeholder="father name"> <br>
+        <input type="text" name="father_phone" placeholder="father phone"> <br>
+
         <!--Mother details-->
-        <input type="email" name="mother email" placeholder="mother email"> <br>
-        <input type="text" name="mother name" placeholder="mother name"> <br>
-        <input type="text" name="mother phone" placeholder="mother phone"> <br>
+        <input type="email" name="mother _mail" placeholder="mother email"> <br>
+        <input type="text" name="mother_name" placeholder="mother name"> <br>
+        <input type="text" name="mother_phone" placeholder="mother phone"> <br>
+
+        <!--Special Needs-->
+        Any special needs : 
+        <select name="special_needs" id="special needs">
+            <option value="">None</option>
+            <option value="ADHD">ADHD</option>
+            <option value="other">other</option>
+        </select> <br>
+
+        <!-- other remarks-->
+        <textarea name="other_remarks" placeholder="other remarks"></textarea>
+
     </div>
 
     <!--Parent user - hidden if not a parent user-->
 
     <div id="parent_form" style="display: none;">
-        <input type="text" name="self relation" placeholder="self relation with student"> <br>
+        <input type="text" name="self_relation" placeholder="self relation with student"> <br>
         <!--Spouse details-->
-        <input type="email" name="spouse email" placeholder="spouse email"> <br>
-        <input type="text" name="spouse name" placeholder="spouse name"> <br>
-        <input type="text" name="spouse phone" placeholder="spouse phone"> <br> 
+        <input type="email" name="spouse_email" placeholder="spouse email"> <br>
+        <input type="text" name="spouse_name" placeholder="spouse name"> <br>
+        <input type="text" name="spouse_phone" placeholder="spouse phone"> <br> 
     </div>
 
     <div id="organisation_form" style="display: none;">organisation form</div>
+
+    <input type="password" name="password" placeholder="password"> <br>
+    <input type="password" name="confirm_password" placeholder="confirm_passowrd"> <br>
 
     <button type="submit">Register</button>
     

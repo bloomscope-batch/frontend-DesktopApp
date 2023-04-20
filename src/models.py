@@ -4,7 +4,7 @@ class User(db.Model):
 
     # Global data for all
 
-    id = db.Column(db.Integer, primary_key = True, auto_increment=True)
+    id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.String(64), unique = True, nullable = False)
     email = db.Column(db.Text, unique = True, nullable = False)
 

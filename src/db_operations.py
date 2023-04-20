@@ -1,6 +1,6 @@
 from src import app, db
 from src.models import User
-from src.utils import hash, any_null
+from src.utils import hash, any_null, send_mail
 from src.form_verify import verify_basic_form, verify_student_form, verify_parent_form
 
 def register_user(user_data):
@@ -98,3 +98,4 @@ def register_user(user_data):
         with app.app_context():
             db.session.add(organisation)
             db.session.commit()
+    

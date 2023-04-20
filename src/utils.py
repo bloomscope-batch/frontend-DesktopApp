@@ -1,4 +1,6 @@
 import hashlib
+import os
+import smtplib
 
 def hash(string):
     string = string.encode("utf-8")
@@ -28,3 +30,11 @@ def verify_password(password, confirm_password):
             return "pwd and confirm pwd fields do not match"
     else:
         return format_verified_msg
+
+def send_mail(reciever, subject, body):
+    sender = "bloomscope.dev.mail@gmail.com"
+    pwd = "bloomscope@iitb"
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login(sender, pwd)
+        msg = f"Subject: {subject}\n\n {body}"
+        smtp.sendmail(sender, reciever, msg)

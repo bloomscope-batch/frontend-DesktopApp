@@ -32,3 +32,5 @@ SQLALCHEMY_DATABASE_URI = f"sqlite:///bloomscope.db"
 # SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 DEBUG = True
+
+UPLOAD_FOLDER = "./test_ques"

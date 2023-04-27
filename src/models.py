@@ -1,43 +1,77 @@
 from src import db
+from datetime import datetime
+
 
 class User(db.Model):
 
-    # Global data for all
+    # Base user metadata
 
     id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.String(64), primary_key = True)
-    email = db.Column(db.Text, primary_key = True)
-
+    user_id = db.Column(db.String(64), unique = True, nullable = False)
     user_type = db.Column(db.Integer, nullable = False)
+    email = db.Column(db.Text, unique = True, nullable = False)
+    phone = db.Column(db.Text, unique = True, nullable = False)
+    profile_pic = db.Column(db.String(64), unique = True, nullable = False, default = "profile_picture")
+    created_at = db.Column(db.DateTime, default = datetime.utcnow, nullable = False)
+    updated_at = db.Column(db.DateTime, default = datetime.utcnow, nullable = False)
 
-    password = db.Column(db.String(64), nullable = False)
+class Admin(db.Model):
 
+    # Admin User
+
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.String(64), unique = True, nullable = False)
+    password =  db.Column(db.String(64), nullable = False)
+
+class Student(db.Model):
+
+    # Student User
+
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.String(64), unique = True, nullable = False)
     name = db.Column(db.Text, nullable = False)
-    phone = db.Column(db.Text, nullable = False)
+    dob = db.Column(db.Text, nullable = False)
+    parent_id = db.Column(db.String(64), db.ForeignKey('parent.user_id'), nullable=False)
+    org_id = db.Column(db.String(64), db.ForeignKey('organization.user_id'), nullable=False)
+    password =  db.Column(db.String(64), nullable = False)
 
-    # Student user - null if not a student user
+class Parent(db.Model):
 
-    dob = db.Column(db.Text, nullable = False) # format : yyyy-mm-dd
+    # Parent User
 
-    father_name = db.Column(db.Text, nullable = True)
-    father_email = db.Column(db.Text, nullable = True)
-    father_phone = db.Column(db.Text, nullable = True)
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.String(64), unique = True, nullable = False)
+    password =  db.Column(db.String(64), nullable = False)
 
-    mother_name = db.Column(db.Text, nullable = True)
-    mother_email = db.Column(db.Text, nullable = True)
-    mother_phone = db.Column(db.Text, nullable = True)
+class Organization(db.Model):
 
-    # Parent user specific - null if not a parent user
+    # Organization User
 
-    self_relation = db.Column(db.Text, nullable = True)
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.String(64), unique = True, nullable = False)
+    name = db.Column(db.Text, nullable = False)
+    password =  db.Column(db.String(64), nullable = False)
 
-    spouse_relation = db.Column(db.Text, nullable = True)
-    spouse_name = db.Column(db.Text, nullable = True)
-    spouse_email = db.Column(db.Text, nullable = True)
-    spouse_phone = db.Column(db.Text, nullable = True)
+class Student(db.Model):
+    # ...
 
-    # Organisation / teacher user - use the global user data
+    # Set up a one-to-one relationship between students and user_profiles
+    user_profile = db.relationship('User', backref='student', uselist=False)
 
-    # use the below for both organisation and parent
-    # not yet in use, will add this attribute later
-    # student_emails = db.Column(db.Text, nullable = True)
+class Parent(db.Model):
+    # ...
+
+    # Set up a one-to-one relationship between parents and user_profiles
+    user_profile = db.relationship('User', backref='parent', uselist=False)
+
+class Organization(db.Model):
+    # ...
+
+    # Set up a one-to-one relationship between organizations and user_profiles
+    user_profile = db.relationship('User', backref='organization', uselist=False)
+
+class Admin(db.Model):
+    # ...
+
+    # Set up a one-to-one relationship between admins and user_profiles
+    user_profile = db.relationship('User', backref='admin', uselist=False)

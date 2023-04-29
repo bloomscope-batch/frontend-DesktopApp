@@ -1,11 +1,12 @@
 from flask import request, render_template
 from src import app
-from src.models import User
 from src.db_operations import register_user
 import csv
 
-@app.route("/sample")
+@app.route("/sample", methods = ["GET", "POST"])
 def sample():
+    if request.method == "POST":
+        return request.form
     return render_template("sample.html")
 
 @app.route("/auth/login/", methods = ["GET", "POST"])
@@ -19,7 +20,6 @@ def login():
 def register():
     if request.method == "POST":
         user_data = request.form
-        return user_data
         register_msg = register_user(user_data)
         return user_data
     return render_template("register.html")

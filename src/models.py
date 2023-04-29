@@ -11,7 +11,7 @@ class User(db.Model):
     user_type = db.Column(db.Integer, nullable = False)
     email = db.Column(db.Text, unique = True, nullable = False)
     phone = db.Column(db.Text, unique = True, nullable = False)
-    profile_pic = db.Column(db.String(64), unique = True, nullable = False, default = "profile_picture")
+    profile_pic = db.Column(db.String(64), nullable = False, default = "default_profile_pic")
     created_at = db.Column(db.DateTime, default = datetime.utcnow, nullable = False)
     updated_at = db.Column(db.DateTime, default = datetime.utcnow, nullable = False)
 
@@ -33,12 +33,12 @@ class Student(db.Model):
     user_id = db.Column(db.String(64), db.ForeignKey('user.user_id'), unique = True, nullable = False)
     name = db.Column(db.Text, nullable = False)
     dob = db.Column(db.Text, nullable = False)
-    parent_id = db.Column(db.String(64), db.ForeignKey('parent.user_id'), nullable=False)
-    org_id = db.Column(db.String(64), db.ForeignKey('organization.user_id'), nullable=True)
+    parent_id = db.Column(db.String(64), db.ForeignKey('parent.user_id'), nullable = False)
+    org_id = db.Column(db.String(64), db.ForeignKey('organization.user_id'), nullable = True)
     password =  db.Column(db.String(64), nullable = False)
 
-    organization = db.relationship('Organization', backref='students')
-    parent = db.relationship('Parent', backref='students')
+    organization = db.relationship('Organization', backref = 'students')
+    parent = db.relationship('Parent', backref = 'students')
 
     # tests = db.relationship('Test', backref='student')
 

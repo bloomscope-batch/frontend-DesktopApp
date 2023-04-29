@@ -18,8 +18,7 @@
             <br>
             <!--User type-->
 
-            <select name="user_type" id="user_type" class="form-select" aria-label="Default select example">
-                <option>Select User Type</option>
+            <select name="user_type" id="user_type" class="form-select">
                 <option value="student" onclick="show_signup_form('student')">Student</option>
                 <option value="parent" onclick="show_signup_form('parent')">Parent</option>
                 <option value="organisation" onclick="show_signup_form('organisation')">Organisation</option>
@@ -32,7 +31,7 @@
             <div id="student_form" style="display: none;">
 
                 <label class="form-label">Name:</label>
-                <input name="name" type ="email" class="form-control" id="name" placeholder="FirstName and LastName"> <br>
+                <input name="name" type ="name" class="form-control" id="name" placeholder="FirstName and LastName"> <br>
 
                 <label for="email" class="form-label">Email Address:</label>
                 <input name="email" type ="email" class="form-control" id="email" placeholder="email-id"> <br>
@@ -45,11 +44,11 @@
 
                 <!--Parent details-->
                 <label class="form-label">Parent's Details:</label>
-                <input type="email" name="parent_email" placeholder="Parent's email" class="form-control">
-                <input type="text" name="parent_phone" placeholder="Parent's phone" class="form-control" > <br>
+                <input name="parent_email" type="email" placeholder="Parent's email" class="form-control">
+                <input name="parent_phone" type="text" placeholder="Parent's phone" class="form-control" > <br>
 
                 <label for="picture-upload" class="form-label">Large file input example</label>
-                <input name="picture" class="form-control form-control-lg" id="picture-upload" type="file"> <br>
+                <input name="profile-pic" class="form-control form-control-lg" id="picture-upload" type="file"> <br>
 
                 <!--Special Needs-->
                 Any special needs : 
@@ -72,10 +71,10 @@
             <div id="parent_form" style="display: none;">
 
                 <label for="email" class="form-label">Email Address:</label>
-                <input type ="email" class="form-control" id="email" placeholder="email-id"> <br>
+                <input name="email" type ="email" class="form-control" id="email" placeholder="email-id"> <br>
 
                 <label for="phone" class="form-label">Phone Number:</label>
-                <input type ="phone" class="form-control" id="phone" placeholder="Phone No.">
+                <input name="phone" type ="phone" class="form-control" id="phone" placeholder="Phone No.">
 
             </div>
 
@@ -84,16 +83,16 @@
             <div id="organisation_form" style="display: none;">
 
                 <label for="name" class="form-label">Name:</label>
-                <input type ="email" class="form-control" id="name" placeholder="Organisation Name"> <br>
+                <input name="name" type ="name" class="form-control" id="name" placeholder="Organisation Name"> <br>
             
                 <label for="email" class="form-label">Email Address:</label>
-                <input type ="email" class="form-control" id="email" placeholder="email-id"> <br>
+                <input name="email" type ="email" class="form-control" id="email" placeholder="email-id"> <br>
 
                 <label for="phone" class="form-label">Phone Number:</label>
-                <input type ="phone" class="form-control" id="phone" placeholder="Phone No."> <br>
+                <input name="phone" type ="phone" class="form-control" id="phone" placeholder="Phone No."> <br>
 
                 <label for="picture-upload" class="form-label">Large file input example</label>
-                <input class="form-control form-control-lg" id="picture-upload" type="file"> <br>
+                <input name="profile-pic" class="form-control form-control-lg" id="picture-upload" type="file"> <br>
             
             </div>
 
@@ -119,7 +118,7 @@
             // disabling user_type selection after once selected
 
             var user_type_select = document.getElementById("user_type");
-            user_type_select.disabled = true;
+            // user_type_select.disabled = true;
 
             // displaying the form for the user type selected
 

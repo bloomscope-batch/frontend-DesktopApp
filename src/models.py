@@ -20,27 +20,34 @@ class Admin(db.Model):
     # Admin User
 
     id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.String(64), unique = True, nullable = False)
+    user_id = db.Column(db.String(64), db.ForeignKey('user.user_id'), unique = True, nullable = False)
     password =  db.Column(db.String(64), nullable = False)
 
 class Student(db.Model):
 
     # Student User
 
+    # add a column to store the tests (test_id(s)) assigned to the students
+
     id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.String(64), unique = True, nullable = False)
+    user_id = db.Column(db.String(64), db.ForeignKey('user.user_id'), unique = True, nullable = False)
     name = db.Column(db.Text, nullable = False)
     dob = db.Column(db.Text, nullable = False)
     parent_id = db.Column(db.String(64), db.ForeignKey('parent.user_id'), nullable=False)
     org_id = db.Column(db.String(64), db.ForeignKey('organization.user_id'), nullable=False)
     password =  db.Column(db.String(64), nullable = False)
 
+    organization = db.relationship('Organization', backref='students')
+    parent = db.relationship('Parent', backref='students')
+
+    # tests = db.relationship('Test', backref='student')
+
 class Parent(db.Model):
 
     # Parent User
 
     id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.String(64), unique = True, nullable = False)
+    user_id = db.Column(db.String(64), db.ForeignKey('user.user_id'), unique = True, nullable = False)
     password =  db.Column(db.String(64), nullable = False)
 
 class Organization(db.Model):
@@ -48,30 +55,41 @@ class Organization(db.Model):
     # Organization User
 
     id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.String(64), unique = True, nullable = False)
+    user_id = db.Column(db.String(64), db.ForeignKey('user.user_id'), unique = True, nullable = False)
     name = db.Column(db.Text, nullable = False)
     password =  db.Column(db.String(64), nullable = False)
 
-class Student(db.Model):
-    # ...
 
-    # Set up a one-to-one relationship between students and user_profiles
-    user_profile = db.relationship('User', backref='student', uselist=False)
+class Test(db.Model):
 
-class Parent(db.Model):
-    # ...
+    # Basic test metadata
 
-    # Set up a one-to-one relationship between parents and user_profiles
-    user_profile = db.relationship('User', backref='parent', uselist=False)
+    id = db.Column(db.Integer, primary_key = True)
+    test_id = db.Column(db.String(64), unique = True, nullable = False)
+    name = db.Column(db.Text, nullable = False)
+    created_at = db.Column(db.DateTime, default = datetime.utcnow, nullable = False)
+    updated_at = db.Column(db.DateTime, default = datetime.utcnow, nullable = False)
+    deadline = db.Column(db.DateTime, default = datetime.utcnow, nullable = False)
+    assigned_to = db.Column(db.Text, nullable = False)
 
-class Organization(db.Model):
-    # ...
+class test_questions(db.Model):
 
-    # Set up a one-to-one relationship between organizations and user_profiles
-    user_profile = db.relationship('User', backref='organization', uselist=False)
+    # questions in the tests
 
-class Admin(db.Model):
-    # ...
+    id = db.Column(db.Integer, primary_key = True)
+    test_id = db.Column(db.String(64), nullable = False)
+    question_id = db.Column(db.String(64), nullable = False)
+    options = db.Column(db.Text, nullable = False)
+    correct_option = db.Column(db.Text, nullable = False)
+    marks = db.Column(db.Integer, nullable = False)
+    marks_distribution = db.Column(db.Integer, nullable = True)
 
-    # Set up a one-to-one relationship between admins and user_profiles
-    user_profile = db.relationship('User', backref='admin', uselist=False)
+class test_results(db.Model):
+
+    # results of tests
+
+    id = db.Column(db.Integer, primary_key = True)
+    test_id = db.Column(db.String(64), nullable = False)
+    student_id = db.Column(db.String(64), nullable = False)
+    marks_distribution = db.Column(db.Integer, nullable = True)
+    total_score = db.Column(db.Integer, nullable = False)

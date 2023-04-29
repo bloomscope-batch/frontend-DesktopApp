@@ -28,8 +28,8 @@ import os
 pwd = os.getcwd()
 db_path = os.path.join("bloomscope.db")
 # using sqlite for now 
-# SQLALCHEMY_DATABASE_URI = f"sqlite:///bloomscope.db"
-SQLALCHEMY_DATABASE_URI = 'postgresql://roguecoder:pip3py#kali@@localhost:5432/bloomscope'
+SQLALCHEMY_DATABASE_URI = f"sqlite:///bloomscope.sqlite"
+# SQLALCHEMY_DATABASE_URI = 'postgresql://roguecoder:pip3py#kali@@localhost:5432/bloomscope'
 # SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 DEBUG = True

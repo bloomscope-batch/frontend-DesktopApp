@@ -1,0 +1,13 @@
+<select name="user_type" id="user_type" class="form-select" aria-label="Default select example">
+    <option value="student" onclick="show_signup_form('student', event)">Student</option>
+    <option value="parent" onclick="show_signup_form('parent', event)">Parent</option>
+    <option value="organisation" onclick="show_signup_form('organisation', event)">Organisation</option>
+</select>
+
+<script>
+    function show_signup_form(user_type, event){
+        console.log(user_type);
+        var select_tag = document.getElementById("user_type");
+        select_tag.disabled = true;
+    }
+</script>

@@ -34,7 +34,7 @@ class Student(db.Model):
     name = db.Column(db.Text, nullable = False)
     dob = db.Column(db.Text, nullable = False)
     parent_id = db.Column(db.String(64), db.ForeignKey('parent.user_id'), nullable=False)
-    org_id = db.Column(db.String(64), db.ForeignKey('organization.user_id'), nullable=False)
+    org_id = db.Column(db.String(64), db.ForeignKey('organization.user_id'), nullable=True)
     password =  db.Column(db.String(64), nullable = False)
 
     organization = db.relationship('Organization', backref='students')

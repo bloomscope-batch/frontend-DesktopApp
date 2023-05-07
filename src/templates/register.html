@@ -13,7 +13,7 @@
 <h1 class="display-6 text-center"> Registration Form </h1>
 <div class ='row justify-content-center my-5'>
     <div class ='col-lg-6'>
-<form action="/auth/register" method="post">
+<form >
 
     <!--Global data for all-->
 
@@ -98,6 +98,8 @@
 <a href="/auth/login">Login</a> <br>
 
 <script>
+    var select_val = document.getElementById('user_type');
+    var value = select.options[select.selectedIndex].value;
     function show_signup_form(user_type) {
         var student_form = document.getElementById("student_form");
         var parent_form = document.getElementById("parent_form");
@@ -117,7 +119,9 @@
             organisation_form.style.display = "block";
         }
     }
+    show_signup_form(value)
 </script>
+
 
 
 </html>

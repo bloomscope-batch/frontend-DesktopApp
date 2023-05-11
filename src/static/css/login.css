@@ -100,18 +100,6 @@ line-height: 24px;
 color: #04548C;
 }
 
-.already_user
-{
-position:relative;
-left:150px;
-width: 170px;
-height: 24px;
-left : 200px;
-top: 100px;
-text-decoration:none;
-display:inline-block;
-}
-
 .user
 {
     text-align:center;
@@ -134,4 +122,20 @@ width: 1000px;
 height: 1047px;
 left: 220px;
 top: 229px;
+}
+
+.signup-box
+{
+  margin-top:100px;
+  padding-left:150px;
+  width: 465px;
+  height: 50px;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius : 10px;
+
+}
+
+.form-group .form-outline .w-75 .form_input{
+margin-bottom:10px;
 }

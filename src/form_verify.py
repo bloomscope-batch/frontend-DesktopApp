@@ -1,19 +1,13 @@
-from src.utils import verify_email, verify_password_format
+from src.utils import verify_email, verify_phone
 
-def verify_basic_form(email, phone, password, confirm_password):
+def verify_basic_form(email, phone):
 
-    # email_verified = verify_email(email)
-
-    # phone_verified = False
-    # if len(phone) == 10:
-    #     phone_verified = True
-
-    # pwd_verify = verify_password(password, confirm_password)
+    email_verified = verify_email(email)
+    phone_verified = verify_phone(phone)
     
-    # if email_verified == phone_verified == pwd_verify == True:
-    #     return True
-    
-    return True
+    if email_verified == phone_verified == True:
+        return True
+    return False
 
 def verify_student_form(dob, parent_details):
     return True

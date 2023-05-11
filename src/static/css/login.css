@@ -1,0 +1,137 @@
+#central_image
+{
+position: absolute;
+width: 500px;
+height: 500px;
+left: 675px;
+top: -150px;
+
+background: url(image.png);
+box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.login_form
+{
+    position: absolute;
+    width: 698px;
+    height: 405px;
+    left: 700px;
+    top: 272px;
+
+}
+
+#exampleInputEmail
+    {position: static;
+    width: 464px;
+    height: 69px;
+    left: 680px;
+    top: 272px;
+}
+
+#exampleInputPassword1
+{
+position: static;
+width: 464px;
+height: 69px;
+left: 675px;
+top: 350px;
+
+}
+
+#login_button
+{
+position: static;
+width: 464px;
+height: 53px;
+left: 675px;
+top: 500px;
+}
+
+
+.signup
+{
+position: absolute;
+width: 299px;
+height: 24px;
+left: 700px;
+top: 600px;
+text-align : center;
+padding-left : 100px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+display : inline-block;
+
+color: #000000;}
+
+.signup_link
+{
+position: absolute;
+width: 299px;
+height: 24px;
+left: 700px;
+top: 650px;
+text-align : center;
+padding-left : 100px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+display : inline-block;
+}
+
+.forgot
+{
+position: absolute;
+width: 170px;
+height: 24px;
+left : 170px;
+top: 280px;
+text-decoration:none;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #04548C;
+}
+
+.already_user
+{
+position:relative;
+left:150px;
+width: 170px;
+height: 24px;
+left : 200px;
+top: 100px;
+text-decoration:none;
+display:inline-block;
+}
+
+.user
+{
+    text-align:center;
+}
+
+
+.new_user
+{
+ display:inline-block;
+}
+.signup_link
+{
+    float:right
+}
+
+.registration_form
+{
+position: absolute;
+width: 1000px;
+height: 1047px;
+left: 220px;
+top: 229px;
+}

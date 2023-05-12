@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="../static/css/login.css" rel="stylesheet">
+<!--    <title>Bootstrap demo</title>-->
   </head>
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -14,38 +15,42 @@
     <div class="login_form">
       <form >
         <div class="form-group form-outline w-75 form_input">
-          <input type="text" class="form-control" id="exampleInputEmail" style="margin-bottom:10px"  aria-describedby="emailHelp" placeholder="Full Name">
+<!--          <label >Email</label>-->
+          <input type="text" class="form-control" id="exampleInputEmail" style="margin-bottom:10px"  aria-describedby="emailHelp" placeholder="Organization Name">
         </div>
 
         <div class="form-group form-outline w-75">
+<!--          <label >Email</label>-->
           <input type="email" class="form-control" id="exampleInputEmail" style="margin-bottom:10px"  aria-describedby="emailHelp" placeholder="Email">
         </div>
 
         <div class="form-group form-outline w-80 ">
+<!--          <label >Password</label>-->
           <input type="text" class="form-control" id="exampleInputPassword1" style="margin-bottom:10px"  placeholder="Phone">
         </div>
+        <br>
+        <label for="exampleInputPassowrd1">Upload Photo</label>
         <div class="form-group form-outline w-80 ">
-        <input placeholder="Birthdate" class="form-control" id="exampleInputPassword1" type="text" onfocus="(this.type='date')" id="date" style="margin-bottom:10px"/>
+<!--          <label >Password</label>-->
+          <input type="file" class="form-control" id="exampleInputPassword1" style="margin-bottom:10px"  placeholder="Upload Photo">
         </div>
-        <div class="form-group form-outline w-75">
-          <input type="email" class="form-control" id="exampleInputEmail" style="margin-bottom:10px"  aria-describedby="emailHelp" placeholder="Parent's Email">
-        </div>
+
         <div class="form-group form-outline w-80 ">
+<!--          <label >Password</label>-->
           <input type="password" class="form-control" id="exampleInputPassword1" style="margin-bottom:10px"  placeholder="Password">
         </div>
+
         <div class="form-group form-outline w-80 ">
-          <input type="text" class="form-control" id="exampleInputPassword1" style="margin-bottom:10px"  placeholder="Parent's Phone">
-        </div>
-        <div class="form-group form-outline w-80 ">
+<!--          <label >Password</label>-->
           <input type="password" class="form-control" id="exampleInputPassword1"  style="margin-bottom:10px" placeholder="Confirm Passowrd">
         </div>
-        <br>
+
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="login_button">Sign Up</button>
         <br>
 
       </form>
 
-        <div class="signup-box" style="padding-left:150px; margin-top:50px;">
+        <div class="signup-box" style="padding-left:150px">
           <p style="display:inline">Already a user?</p><a href="#"  style="text-decoration:none">Sign In</a>
         </div>
     </div>

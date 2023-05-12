@@ -1,4 +1,4 @@
-from src import app
+from src import app, db
 
 if __name__ == '__main__':
 
@@ -9,6 +9,6 @@ if __name__ == '__main__':
     if server_env == "prod":
         app.debug = False
 
-    # with app.app_context():
-    #     db.create_all()
+    with app.app_context():
+        db.create_all()
     app.run()

@@ -49,4 +49,22 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 a
 {
 text-decoration : none;
+font-family: "Inter", "Courier New";
+}
+
+#sidebarMenu
+{
+    background-color : #1E1E1E;;
+}
+.container-fluid
+{
+    background-color: #0808080;
+}
+.list-group-item
+{
+    background-color : #bbbbbb;
+}
+#sidebarMenu
+{
+    background-color : #bbbbbb;
 }

@@ -19,8 +19,11 @@ def create_session_token(created_at):
 #             return True
 #     return False
 
-def generate_username(user_type, email, phone):
-    return hash(email)
+def generate_username(user_type, phone):
+    return user_type[0:3] + phone
+
+def generate_access_token(username, login_time):
+    return hash(username + str(login_time))
 
 def verify_email(email):
     email_regex_patter = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'

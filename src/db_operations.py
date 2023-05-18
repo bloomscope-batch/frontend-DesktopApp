@@ -1,6 +1,6 @@
 from src import app, db
 from src.models import User, Student, Parent, Organization
-from src.models import User_sessions
+from src.models import User_sessions, pwd_reset_hash
 from src.utils import hash, send_mail, generate_username, generate_access_token
 from src.form_verify import verify_basic_form, verify_student_form, verify_parent_form
 
@@ -10,14 +10,16 @@ def verify_login_session(session, login_time):
     username = session.get("username")
     access_code = session.get("access_token")
     with app.app_context():
-        user_exists = User.query.filter_by(user_id = username).all()
+        user_exists = db.session.query(User.query.filter_by(user_id = username).exists()).scalar()
         if user_exists:
             user_session = User_sessions.query.filter_by(user_id = username).all()
             user_session = user_session[-1]
             if user_session.user_id == username and user_session.access_token == access_code:
-                if user_session.expire_at < login_time:
+                if user_session.expire_at > login_time:
                     return {"message" : "login success"}
                 else:
+                    print(str(login_time))
+                    print(str(user_session.expire_at))
                     return {"message" : "session expired"}
     return {"message" : "login unsuccessful"}
 
@@ -25,7 +27,7 @@ def login_user(user_data, login_time):
     username = user_data.get("username")
     password = hash(user_data.get("password"))
     with app.app_context():
-        user = User.query.filterby(user_id = username).fisrt()
+        user = User.query.filter_by(user_id = username).first()
         if user:
             if user.password == password:
                 access_token = generate_access_token(username, login_time)
@@ -81,11 +83,11 @@ def register_user(user_data, login_time):
 
             # Creating parent user 
 
-            parent_username = generate_username(user_type, phone)
+            parent_username = generate_username("parent", phone)
             parent_pwd = hash("parent-pwd")
-            parent_user = User(user_id = parent_username, user_type = "parent", email = parent_email, phone = parent_phone, password = password)
+            parent_user = User(user_id = parent_username, user_type = "parent", email = parent_email, phone = parent_phone, password = parent_pwd)
             
-            parent = Parent(user_id = parent_username, password = parent_pwd)
+            parent = Parent(user_id = parent_username)
             
             # Creating Student User
 
@@ -94,6 +96,12 @@ def register_user(user_data, login_time):
             # commiting users to database
 
             with app.app_context():
+
+                user_email_exists = db.session.query(User.query.filter_by(email = email, user_type = "student").exists()).scalar()
+                user_phone_exists = db.session.query(User.query.filter_by(phone = phone, user_type = "student").exists()).scalar()
+                if user_email_exists or user_phone_exists:
+                    return ({"message" : "user already exists"}, None)
+                
                 try:
                     db.session.add(user)
                     db.session.add(student)
@@ -123,6 +131,12 @@ def register_user(user_data, login_time):
         parent = Parent(user_id = username)
         
         with app.app_context():
+
+            user_email_exists = db.session.query(User.query.filter_by(email = email, user_type = "parent").exists()).scalar()
+            user_phone_exists = db.session.query(User.query.filter_by(phone = phone, user_type = "parent").exists()).scalar()
+            if user_email_exists or user_phone_exists:
+                return ({"message" : "user already exists"}, None)
+            
             try:
                 db.session.add(user)
                 db.session.add(parent)
@@ -142,6 +156,12 @@ def register_user(user_data, login_time):
         organisation = Organization(user_id = username, name = name)
         
         with app.app_context():
+
+            user_email_exists = db.session.query(User.query.filter_by(email = email, user_type = "oraganisation").exists()).scalar()
+            user_phone_exists = db.session.query(User.query.filter_by(phone = phone, user_type = "oraganisation").exists()).scalar()
+            if user_email_exists or user_phone_exists:
+                return ({"message" : "user already exists"}, None)
+            
             try:
                 db.session.add(user)
                 db.session.add(organisation)
@@ -150,4 +170,12 @@ def register_user(user_data, login_time):
                 return ({"message" : "registered"}, session_data)
             except:
                 return ({"message" : "user already exists"}, None)
+            
+def reset_pwd(unique_id, pwd):
 
+    with app.app_context():
+
+        username = pwd_reset_hash.query.filter_by(hash_id = unique_id).first().user_id
+        user = User.query.filter_by(user_id = username).first()
+        user.password = hash(pwd)
+        db.session.commit()

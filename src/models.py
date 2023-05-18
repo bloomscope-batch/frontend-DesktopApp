@@ -63,6 +63,13 @@ class User_sessions(db.Model):
     access_token = db.Column(db.String(64), nullable = False)
     expire_at = db.Column(db.DateTime, default = datetime.utcnow, nullable = False)
 
+class pwd_reset_hash(db.Model):
+
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Text, nullable = False, unique = True)
+    hash_id = db.Column(db.Text, nullable = False)
+    expire_at = db.Column(db.DateTime, default = datetime.utcnow, nullable = False)
+
 class Test(db.Model):
 
     # Basic test metadata

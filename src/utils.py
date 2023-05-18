@@ -1,7 +1,13 @@
+from src import app, db
+from src.models import pwd_reset_hash
+
 import hashlib
-import os
-import smtplib
 import re
+import datetime
+
+import smtplib
+import ssl
+from email.message import EmailMessage
 
 def hash(string):
     string = string.encode("utf-8")
@@ -49,10 +55,39 @@ def verify_password(password, confirm_password):
     else:
         return format_verified_msg
 
+def create_mail(sender, receiver, subject, body):
+
+    em = EmailMessage()
+    em['From'] = sender
+    em['To'] = receiver
+    em['Subject'] = subject
+    em.set_content(body)
+
+    return em
+
 def send_mail(reciever, subject, body):
     sender = "bloomscope.dev.mail@gmail.com"
-    pwd = "bloomscope@iitb"
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+    pwd = "deuvtimhklddheon"
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as smtp:
         smtp.login(sender, pwd)
-        msg = f"Subject: {subject}\n\n {body}"
-        smtp.sendmail(sender, reciever, msg)
+        msg = create_mail(sender, reciever, subject, body)
+        smtp.sendmail(sender, reciever, msg.as_string())
+
+def send_pwd_reset_mail(email, username, current_time):
+    uniq_id = hash(email + username + str(current_time))
+    reset_link = f"http://localhost:5000/reset-pwd/{uniq_id}/"
+    subject = "password reset link"
+    body = f"Click <a href='{reset_link}'>here</a> to reset password. This link wil be valid only for next 10 minutes."
+    send_mail(email, subject, body)
+    with app.app_context():
+        link_exists = db.session.query(pwd_reset_hash.query.filter_by(user_id = username).exists()).scalar()
+        time_change = datetime.timedelta(minutes = 10)
+        if link_exists:
+            link = pwd_reset_hash.query.filter_by(user_id = username).first()
+            link.hash_id = uniq_id
+            link.expire_at = current_time + time_change
+        else:
+            db_otp_store = pwd_reset_hash(user_id = username, hash_id = uniq_id, expire_at = current_time + time_change)
+            db.session.add(db_otp_store)
+        db.session.commit()

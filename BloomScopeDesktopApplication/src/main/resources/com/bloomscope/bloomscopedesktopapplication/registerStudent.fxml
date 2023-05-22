@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="850.0" prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloomscope.bloomscopedesktopapplication.StudentController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@bloomScopeLogoIIT.jpg" />
+         </image>
+         <VBox.margin>
+            <Insets bottom="20.0" top="50.0" />
+         </VBox.margin>
+      </ImageView>
+      <VBox alignment="TOP_CENTER" maxWidth="600.0" prefHeight="245.0" prefWidth="600.0" style="-fx-border-color: #e4e4e4;">
+         <children>
+            <TextField fx:id="name" focusTraversable="false" maxWidth="400.0" promptText="Full Name">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="20.0" />
+               </VBox.margin></TextField>
+            <TextField fx:id="emailId" focusTraversable="false" maxWidth="400.0" promptText="Email id">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></TextField>
+            <TextField fx:id="phoneNo" focusTraversable="false" maxWidth="400.0" promptText="Phone Number">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></TextField>
+            <DatePicker fx:id="dateOfBirth" editable="false" focusTraversable="false" maxWidth="400.0" promptText="Date of birth" showWeekNumbers="true">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></DatePicker>
+            <TextField fx:id="parentEmail" focusTraversable="false" maxWidth="400.0" promptText="Parent's Email">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></TextField>
+            <TextField fx:id="parentPhone" focusTraversable="false" maxWidth="400.0" promptText="Parent's Phone">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></TextField>
+            <HBox fx:id="picPaht" alignment="TOP_CENTER" minHeight="25.0" prefHeight="27.0" prefWidth="600.0">
+               <children>
+                  <TextField fx:id="docPath" focusTraversable="false" maxWidth="400.0" minWidth="300.0" promptText="Upload Photo" />
+                  <Button focusTraversable="false" minWidth="100.0" mnemonicParsing="false" onMouseClicked="#chooseFile" text="Brows" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <PasswordField fx:id="createPass" focusTraversable="false" maxWidth="400.0" promptText="Create Password">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </PasswordField>
+            <TextField fx:id="confirmPass" focusTraversable="false" maxWidth="400.0" promptText="Confirm Password">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Button focusTraversable="false" maxWidth="400.0" mnemonicParsing="false" onMouseClicked="#signUp" style="-fx-background-color: #3884ee;" text="Sign Up" textFill="WHITE">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" maxHeight="30.0" maxWidth="600.0" minHeight="30.0" minWidth="600.0" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: #e4e4e4;">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" />
+            <Text fill="#215ba8" onMouseClicked="#goToLoginPage" stroke="#215ba8" strokeWidth="0.5" style="-fx-font-weight: bold;" text="Log in">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Text>
+         </children>
+         <VBox.margin>
+            <Insets top="26.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

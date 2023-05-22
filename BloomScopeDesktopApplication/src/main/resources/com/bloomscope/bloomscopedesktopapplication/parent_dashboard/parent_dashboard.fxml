@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane fx:id="dashboardScrolpan" fitToHeight="true" fitToWidth="true" minHeight="650.0" minWidth="850.0" prefHeight="650.0" prefWidth="850.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloomscope.bloomscopedesktopapplication.parent_dashboard.Dashboard">
+    <content>
+        <BorderPane prefHeight="650.0" prefWidth="850.0">
+            <left>
+                <VBox prefHeight="589.0" prefWidth="250.0" style="-fx-background-color: #d7d7d7;" BorderPane.alignment="CENTER" />
+            </left>
+            <top>
+                <AnchorPane maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="848.0" style="-fx-background-color: #c8c9c9;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Circle fx:id="circle" fill="DODGERBLUE" layoutX="814.0" layoutY="26.0" onMouseClicked="#logOut" radius="20.0" stroke="#c8c9c9" strokeType="INSIDE" AnchorPane.rightAnchor="9.0" />
+                        <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="40.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0">
+                            <image>
+                                <Image url="@../logo.jpg" />
+                            </image>
+                        </ImageView>
+                        <Text layoutX="453.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parent Name" textAlignment="RIGHT" wrappingWidth="336.5615234375" AnchorPane.rightAnchor="58.4384765625">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </AnchorPane>
+            </top>
+            <center>
+                <VBox alignment="CENTER" onMouseClicked="#logOut" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
+            </center>
+        </BorderPane>
+    </content>
+</ScrollPane>

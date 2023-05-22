@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="850.0" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bloomscope.bloomscopedesktopapplication.HomeController">
+   <center>
+      <ScrollPane fx:id="homeScrolPan" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <BorderPane fx:id="homeBorderPan" prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <VBox fx:id="home" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;" BorderPane.alignment="TOP_CENTER">
+                     <padding>
+                        <Insets bottom="40.0" />
+                     </padding></VBox>
+               </center>
+            </BorderPane>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

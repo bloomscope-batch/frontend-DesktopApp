@@ -1,5 +1,5 @@
-from flask import request, render_template, session, redirect, url_for
-
+from flask import jsonify, request, render_template, session, redirect, url_for
+from flask import Flask, request, jsonify
 from src import app, db
 from src.models import User, pwd_reset_hash
 from src.db_operations import register_user, login_user, verify_login_session, reset_pwd
@@ -14,35 +14,49 @@ def root_route():
     session['access_token'] = None
     return redirect(url_for("register_route"))
 
+# class Response:
+#      def __init__(self, userType, message):
+#         self.userType = userType
+#         self.message = message
+
+class Login:
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+def response(userType, message):
+     # Create a User object
+    # user = Response(status='200', userType= student, message='Login successful')
+
+    # Create a dictionary representing the response data
+    response_data = {
+        'userType': userType,
+        'message': message
+    }
+
+    # Convert the dictionary into a JSON response
+    response = jsonify(response_data)
+    response.status_code = 200
+    return response
+
 @app.route("/auth/login/", methods = ["GET", "POST"])
 def login_route():
+    # Retrieve the JSON data from the request
+    login_data = request.get_json()
 
-    try:
-        login_time = datetime.utcnow()
-        if session['username'] != None:
-            login_msg = verify_login_session(dict(session), login_time)
-            if login_msg["message"] == "login success":
-                return f"Logged in as {session['username']}"
-            elif login_msg["message"] == "session expired":
-                return "session expired login again."
-            else:
-                return render_template("login.html")
-    except:
-        pass
-            
-    if request.method == "POST":
-        user_data = request.form
-        login_msg, access_token = login_user(user_data, login_time)
-        if login_msg["message"] == "login success":
-            session['username'] = user_data["username"]
-            session['access_token'] = access_token
-            return f"Logged in as {session['username']}"
-        elif login_msg["message"] == "user does not exist":
-            return redirect(url_for("register_route"))
-        else:
-            return login_msg
+    # Convert the JSON data to a Python object
+    login_object = Login(**login_data)
+
+    if (login_object.username == 'student') & (login_object.password == 'password'):
+        return response('student', 'authorized user')
     
-    return render_template("login.html")
+    if (login_object.username == 'parent') & (login_object.password == 'password'):
+        return response('parent', 'authorized user')
+    
+    if (login_object.username == 'organization') & (login_object.password == 'password'):
+        return response('organization', 'authorized user')
+    
+    return response(login_object.username, 'unauthorized user'), 401
 
 @app.route("/auth/register/", methods = ["GET", "POST"])
 def register_route():

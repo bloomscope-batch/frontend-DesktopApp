@@ -1,0 +1,23 @@
+.date-style {
+    -fx-text-fill: grey;
+}
+.updateHeading-style {
+    -fx-font-size: 18px;
+}
+.update-style {
+    -fx-font-size: 15px;
+    -fx-text-fill: #525252;
+    -fx-padding: 5px 0px 10px 0px;
+    -fx-text-wrap: true;
+}
+.update-vbox {
+    -fx-border-color: transparent transparent #b3b2b1 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10px 0px 10px 0px;/* top right bottom left */
+}
+.sidebar-default-colour {
+    -fx-fill: #6F6C6C;
+}
+.sidebar-clicked-colour {
+    -fx-fill: #0090F8;
+}

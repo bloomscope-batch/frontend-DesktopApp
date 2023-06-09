@@ -34,7 +34,7 @@
                 </AnchorPane>
             </top>
             <center>
-                <VBox alignment="CENTER" onMouseClicked="#logOut" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
             </center>
         </BorderPane>
     </content>

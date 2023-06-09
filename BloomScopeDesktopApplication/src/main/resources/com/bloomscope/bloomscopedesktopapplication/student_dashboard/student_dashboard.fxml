@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,7 +16,86 @@
     <content>
         <BorderPane prefHeight="650.0" prefWidth="850.0">
             <left>
-                <VBox prefHeight="589.0" prefWidth="250.0" style="-fx-background-color: #d7d7d7;" BorderPane.alignment="CENTER" />
+                <VBox maxWidth="268.0" minHeight="589.0" minWidth="230.0" prefHeight="598.0" prefWidth="230.0" style="-fx-background-color: #d7d7d7;" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fill="#6f6c6c" strokeType="OUTSIDE" strokeWidth="0.0" text="MY DASHBOARD" wrappingWidth="230.078125">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="latestUpdates" onMouseClicked="#getUpdates" strokeType="OUTSIDE" strokeWidth="0.0" text="-Latest Updates" wrappingWidth="210.0">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="assignments" onMouseClicked="#getAssignments" strokeType="OUTSIDE" strokeWidth="0.0" text="-Assignments" wrappingWidth="210.0">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="calendar" onMouseClicked="#getCallender" strokeType="OUTSIDE" strokeWidth="0.0" text="-Calendar" wrappingWidth="210.0">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="suggestions" onMouseClicked="#getSuggestions" strokeType="OUTSIDE" strokeWidth="0.0" text="-Suggestions" wrappingWidth="210.0">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="overallProgressReport" onMouseClicked="#getProgressReport" strokeType="OUTSIDE" strokeWidth="0.0" text="-Overall Progress Report" wrappingWidth="210.0">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="helpDisk" onMouseClicked="#getHelpDisk" strokeType="OUTSIDE" strokeWidth="0.0" text="-Helpdisk" wrappingWidth="210.0">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets left="20.0" top="20.0" />
+               </padding></VBox>
             </left>
             <top>
                 <AnchorPane maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="848.0" style="-fx-background-color: #c8c9c9;" BorderPane.alignment="CENTER">
@@ -33,9 +114,9 @@
                     </children>
                 </AnchorPane>
             </top>
-            <center>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
-            </center>
+         <center>
+            <ScrollPane fx:id="studentDashboard" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
         </BorderPane>
     </content>
 </ScrollPane>

@@ -15,22 +15,6 @@ public class HelloApplication extends Application {
         this.primaryStage = stage;
 
         loadXML("home.fxml", true);
-//        loadXML("/com/bloomscope/bloomscopedesktopapplication/student_dashboard/dashboard.fxml");
-
-//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/bloomscope/bloomscopedesktopapplication/student_dashboard/dashboard.fxml"));
-//        try {
-//            scene = new Scene(fxmlLoader.load());
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        stage.setTitle("BloomScope");
-//        stage.setScene(scene);
-//        stage.setMinHeight(600);
-//        stage.setMinWidth(800);
-//        stage.setFullScreen(true);
-////        System.out.println(stage.getStyle());
-//        System.out.println(stage.isFullScreen());
-//        stage.show();
     }
 
     public static void loadXML(String page, boolean isFullScreen){

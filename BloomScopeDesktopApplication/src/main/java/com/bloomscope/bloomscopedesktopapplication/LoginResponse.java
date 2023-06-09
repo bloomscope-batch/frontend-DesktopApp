@@ -9,18 +9,10 @@ public class LoginResponse {
     }
 
     public LoginResponse(int status, String userType, String message) {
-//        this.status = status;
         this.userType = userType;
         this.message = message;
     }
 
-//    public int getStatus() {
-//        return status;
-//    }
-//
-//    public void setStatus(int status) {
-//        this.status = status;
-//    }
 
     public String getUserType() {
         return userType;

@@ -26,6 +26,7 @@ public class Static<ObjectType> {
     private static LoginResponse loginResponse;
     private static ParentSignUpResponse parentSignUpResponse;
     private static OrganizationSignUpResponse organizationSignUpResponse;
+    public static ScrollPane studentDashboard;
 
     public String makeHTTPrequest(ObjectType objectType, String post, String url) {
         // create a HttpClient instance
